@@ -28,6 +28,10 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  overflow: clip;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -138,6 +142,10 @@ nav {
   font-size: 0.84rem;
   font-weight: 700;
   backdrop-filter: blur(16px);
+}
+
+nav a {
+  white-space: nowrap;
 }
 
 .scroll-computer {
@@ -1002,6 +1010,32 @@ ul {
   padding: 0 1.1rem;
   background: rgba(255, 255, 255, 0.08);
   font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 1440px) {
+  .hero,
+  .sky-scroll-section,
+  .story-sticky,
+  .work-section,
+  .resume-section,
+  .contact-section {
+    padding-right: max(5rem, calc((100vw - 1320px) / 2));
+    padding-left: max(5rem, calc((100vw - 1320px) / 2));
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 0.9fr) minmax(30rem, 0.72fr);
+  }
+
+  .portrait {
+    width: min(34rem, 34vw);
+  }
+
+  .work-grid,
+  .resume-grid {
+    max-width: 1320px;
+  }
 }
 
 @keyframes floaty {
@@ -1068,6 +1102,7 @@ ul {
   .hero,
   .story-sticky,
   .sky-scroll-section,
+  .resume-stack-row,
   .resume-grid,
   .contact-section {
     grid-template-columns: 1fr;
@@ -1075,10 +1110,16 @@ ul {
 
   .hero {
     padding-top: 6rem;
+    gap: 1.5rem;
   }
 
   .hero-stage {
     min-height: 35rem;
+  }
+
+  .sky-scroll-section {
+    min-height: auto;
+    background-attachment: scroll;
   }
 
   .story-sticky {
@@ -1101,36 +1142,83 @@ ul {
   }
 
   .work-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resume-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .resume-panel.wide {
     grid-column: span 1;
   }
 
+  .resume-stack-row {
+    gap: 1rem;
+  }
+
   .work-card {
     min-height: auto;
+  }
+
+  .stack-spirit {
+    min-height: 16rem;
   }
 }
 
 @media (max-width: 620px) {
   .site-header {
     align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.8rem 0.75rem;
+  }
+
+  .brand {
+    width: 3.25rem;
+    border-width: 2px;
+  }
+
+  .brand-bubble {
+    top: 4.2rem;
+    left: 3.3rem;
+    max-width: 11rem;
   }
 
   nav {
-    max-width: 14rem;
+    max-width: min(17rem, calc(100vw - 5rem));
     flex-wrap: wrap;
     justify-content: flex-end;
     border-radius: 8px;
+    gap: 0.45rem 0.7rem;
+    padding: 0.58rem 0.7rem;
+    font-size: 0.76rem;
   }
 
   h1 {
     font-size: clamp(3.2rem, 16vw, 5.2rem);
   }
 
+  h2 {
+    font-size: clamp(2.35rem, 13vw, 4.1rem);
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 7.5rem;
+  }
+
+  .lede {
+    font-size: 1rem;
+  }
+
   .hero-stage {
     min-height: 29rem;
+  }
+
+  .portrait {
+    right: -0.2rem;
+    width: min(22rem, 82vw);
+    border-width: 7px;
   }
 
   .computer {
@@ -1150,9 +1238,85 @@ ul {
     top: 5rem;
   }
 
+  .story-sticky {
+    min-height: 100svh;
+    padding: 5.8rem 1rem 2.5rem;
+    gap: 1rem;
+  }
+
+  .scene {
+    min-height: 35vh;
+  }
+
+  .scene::before {
+    display: none;
+  }
+
+  .scene-img {
+    width: min(21rem, 88vw);
+    height: 35vh;
+    border-width: 6px;
+  }
+
+  .chapter p:not(.eyebrow) {
+    font-size: 1rem;
+  }
+
+  .work-grid,
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-section,
+  .resume-section,
+  .contact-section,
+  .sky-scroll-section {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .resume-panel {
+    min-height: auto;
+  }
+
   .skill-orbit {
     min-height: auto;
     justify-content: flex-start;
+    padding: 1rem;
+    background-size: 28px 28px;
+  }
+
+  .skill-orbit span {
+    padding: 0.58rem 0.78rem;
+    font-size: 0.84rem;
+  }
+
+  .stack-spirit {
+    min-height: 14rem;
+  }
+
+  .contact-section {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 390px) {
+  nav {
+    max-width: calc(100vw - 4.8rem);
+    font-size: 0.72rem;
+  }
+
+  .hero-icon-links {
+    flex-wrap: wrap;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .contact-links a {
+    min-height: 3rem;
+    padding: 0 0.85rem;
   }
 }
 
