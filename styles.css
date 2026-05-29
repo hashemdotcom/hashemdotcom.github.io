@@ -444,13 +444,21 @@ h3 {
   position: absolute;
   top: 6rem;
   left: clamp(1.1rem, 5vw, 5rem);
+  z-index: 8;
   display: flex;
   gap: 0.3rem;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  background: rgba(0, 29, 110, 0.36);
+  backdrop-filter: blur(10px);
   font-weight: 900;
 }
 
 .scene {
   position: relative;
+  z-index: 1;
   min-height: 68vh;
   perspective: 1000px;
 }
@@ -1122,6 +1130,15 @@ ul {
     background-attachment: scroll;
   }
 
+  .sky-word {
+    inset: auto 0.75rem 0.15rem;
+    background-attachment: scroll;
+    font-size: clamp(3.1rem, 13.8vw, 7.5rem);
+    line-height: 0.86;
+    text-align: center;
+    white-space: nowrap;
+  }
+
   .story-sticky {
     align-content: center;
     padding-top: 6rem;
@@ -1235,7 +1252,8 @@ ul {
   }
 
   .chapter-count {
-    top: 5rem;
+    top: 5.1rem;
+    left: 1rem;
   }
 
   .story-sticky {
@@ -1246,6 +1264,7 @@ ul {
 
   .scene {
     min-height: 35vh;
+    margin-top: 1rem;
   }
 
   .scene::before {
