@@ -28,10 +28,25 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Prepare static site
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude '.git' \
+            --exclude '.agents' \
+            --exclude '_site' \
+            --exclude 'Wedding' \
+            ./ _site/
+          mkdir -p _site/wedding
+          rsync -a \
+            --exclude '.git' \
+            --exclude '.agents' \
+            Wedding/ _site/wedding/
+
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy
         id: deployment
