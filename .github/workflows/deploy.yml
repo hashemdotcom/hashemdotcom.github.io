@@ -35,14 +35,14 @@ jobs:
             --exclude '.git' \
             --exclude '.agents' \
             --exclude '_site' \
-            --exclude 'wedding' \
+            --exclude 'Wedding' \
             ./ _site/
-          mkdir -p _site/wedding
+          mkdir -p _site/Wedding
           rsync -a \
             --exclude '.git' \
             --exclude '.agents' \
             --exclude 'wedding-invitation' \
-            wedding/ _site/wedding/
+            Wedding/ _site/Wedding/
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
