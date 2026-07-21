@@ -41,6 +41,7 @@ jobs:
           rsync -a \
             --exclude '.git' \
             --exclude '.agents' \
+            --exclude 'wedding-invitation' \
             wedding/ _site/wedding/
 
       - name: Upload site

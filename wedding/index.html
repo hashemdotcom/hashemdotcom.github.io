@@ -1,743 +1,89 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>دعوت‌نامه عاطفه و رامین</title>
-</head>
-<body>
-<div id="wedding-envelope-app" dir="rtl">
-  <style>
-    @font-face {
-      font-family: "PersianInvite";
-      src: url("font/IranNastaliq/IranNastaliq/IranNastaliq.ttf") format("truetype");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    body {
-      margin: 0;
-    }
-
-    #wedding-envelope-app {
-      --paper: #f7f3ea;
-      --paper-warm: #ebe2d4;
-      --paper-shadow: #cfc2b1;
-      --ink: #4d4944;
-      --soft-ink: #746e67;
-      --line: rgba(78, 71, 64, 0.25);
-      --shadow: rgba(47, 38, 30, 0.24);
-      min-height: 100vh;
-      box-sizing: border-box;
-      display: grid;
-      place-items: center;
-      padding: 76px 18px 42px;
-      color: var(--ink);
-      font-family: PersianInvite, "IranNastaliq", "Iran Nastaliq", Tahoma, Arial, sans-serif;
-      background:
-        radial-gradient(circle at 15% 12%, rgba(153, 128, 101, 0.16), transparent 30%),
-        radial-gradient(circle at 86% 84%, rgba(108, 96, 82, 0.14), transparent 34%),
-        linear-gradient(135deg, #d5cabb, #f1eee8 48%, #c9b8a4);
-      overflow: hidden;
-    }
-
-    #wedding-envelope-app * {
-      box-sizing: border-box;
-    }
-
-    .scene {
-      position: relative;
-      width: min(980px, 100%);
-      min-height: 720px;
-      display: grid;
-      place-items: center;
-      perspective: 1700px;
-    }
-
-    .letter {
-      position: absolute;
-      z-index: 1;
-      width: min(895px, 96%);
-      min-height: 520px;
-      display: grid;
-      grid-template-columns: 40% 1fr;
-      gap: 34px;
-      padding: 34px;
-      border: 1px solid rgba(91, 84, 76, 0.24);
-      background:
-        linear-gradient(rgba(247, 243, 234, 0.58), rgba(247, 243, 234, 0.58)),
-        url("مفید/texture.png"),
-        var(--paper);
-      background-size: auto, cover, auto;
-      box-shadow: 0 30px 74px var(--shadow);
-      transform: translateY(110px) scale(0.9);
-      opacity: 0;
-      transition: transform 1050ms cubic-bezier(.2,.82,.16,1), opacity 520ms ease;
-    }
-
-    .is-open .letter {
-      transform: translateY(14px) scale(1);
-      opacity: 1;
-      z-index: 4;
-      transition-delay: 220ms, 220ms;
-    }
-
-    .photo-panel {
-      display: grid;
-      gap: 18px;
-      align-content: start;
-    }
-
-    .main-photo,
-    .mini-photo {
-      overflow: hidden;
-      border-radius: 7px;
-      background: #ded8ce;
-      filter: grayscale(1) contrast(0.92);
-    }
-
-    .main-photo {
-      aspect-ratio: 1 / 1.04;
-    }
-
-    .photo-message {
-      min-height: 172px;
-      display: grid;
-      place-items: center;
-      padding: 20px 18px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      color: #5f5953;
-      font-size: clamp(19px, 2.2vw, 27px);
-      line-height: 2;
-      text-align: center;
-    }
-
-    .photo-panel img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .details {
-      display: grid;
-      align-content: start;
-      gap: 18px;
-      padding-top: 4px;
-      text-align: right;
-    }
-
-    .postmark {
-      display: grid;
-      grid-template-columns: 1fr 82px;
-      gap: 18px;
-      align-items: start;
-      direction: rtl;
-    }
-
-    .headline {
-      margin: 0;
-      font-size: clamp(46px, 7vw, 84px);
-      line-height: 0.95;
-      font-weight: 400;
-      letter-spacing: 0;
-    }
-
-    .subhead {
-      margin: 8px 0 0;
-      color: var(--soft-ink);
-      font-size: clamp(24px, 2.8vw, 36px);
-      font-weight: 400;
-    }
-
-    .stamp {
-      height: 112px;
-      border: 0;
-      outline: 0;
-      display: grid;
-      place-items: center;
-      background: transparent;
-      filter: grayscale(1) contrast(0.95);
-    }
-
-    .stamp img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .poem {
-      margin: 10px 0 0;
-      padding: 14px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      color: #5f5953;
-      font-size: clamp(22px, 2.45vw, 31px);
-      line-height: 1.9;
-    }
-
-    .row-line {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 8px;
-      align-items: end;
-      border-bottom: 0;
-      padding-bottom: 0;
-      font-size: clamp(21px, 2.35vw, 29px);
-      text-align: center;
-    }
-
-    .row-line strong {
-      font-weight: 500;
-    }
-
-    .script {
-      color: #837b73;
-      font-style: italic;
-      font-size: clamp(18px, 2.5vw, 30px);
-    }
-
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(54px, 1fr));
-      gap: 12px;
-      direction: rtl;
-      margin: 4px 0 10px;
-    }
-
-    .countdown span {
-      display: grid;
-      place-items: center;
-      min-height: 74px;
-      border: 0;
-      border-radius: 6px;
-      background:
-        radial-gradient(circle at 50% 18%, rgba(255,255,255,0.78), transparent 44%),
-        rgba(232, 224, 211, 0.42);
-      box-shadow: 0 8px 18px rgba(72, 62, 52, 0.08), inset 0 1px 0 rgba(255,255,255,0.64);
-      color: var(--soft-ink);
-      font-size: 18px;
-    }
-
-    .countdown b {
-      display: block;
-      color: var(--ink);
-      font-size: 36px;
-      font-weight: 500;
-    }
-
-    .names {
-      margin: 0;
-      font-size: clamp(36px, 5vw, 64px);
-      line-height: 1.15;
-      font-weight: 400;
-    }
-
-    .event-note {
-      color: #5f5953;
-      font-size: clamp(23px, 2.45vw, 32px);
-      line-height: 1.9;
-      text-align: right;
-    }
-
-    .envelope-wrap {
-      position: absolute;
-      z-index: 3;
-      width: min(920px, 96%);
-      height: min(460px, 56vw);
-      min-height: 318px;
-      filter: drop-shadow(0 32px 46px var(--shadow));
-      transform: translateY(8px) rotate(-2.4deg);
-      transition: transform 1050ms cubic-bezier(.2,.82,.16,1), opacity 650ms ease;
-    }
-
-    .is-open .envelope-wrap {
-      transform: translateY(-72px) rotate(-2.4deg) scale(0.96);
-      opacity: 0.92;
-    }
-
-    .envelope {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      border: 0;
-      overflow: visible;
-      box-shadow: none;
-    }
-
-    .envelope-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      filter: drop-shadow(0 25px 32px rgba(47, 38, 30, 0.22));
-    }
-
-    .inner-shadow,
-    .flap,
-    .side-left,
-    .side-right,
-    .bottom-flap,
-    .crease {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      display: none;
-    }
-
-    .inner-shadow {
-      z-index: 2;
-      opacity: 0;
-      background: linear-gradient(180deg, rgba(58, 48, 39, 0.24), transparent 22%);
-      clip-path: polygon(3% 0, 97% 0, 50% 50%);
-      transition: opacity 700ms ease;
-    }
-
-    .is-open .inner-shadow {
-      opacity: 1;
-    }
-
-    .flap {
-      z-index: 6;
-      background: linear-gradient(180deg, rgba(255,255,255,.6), rgba(223, 214, 201, .35));
-      clip-path: polygon(0 0, 100% 0, 50% 58%);
-      transform-origin: top center;
-      transition: transform 980ms cubic-bezier(.2,.82,.16,1), filter 700ms ease;
-      box-shadow: inset 0 -1px 0 rgba(80, 72, 63, 0.18);
-    }
-
-    .is-open .flap {
-      transform: rotateX(176deg);
-      filter: brightness(0.96);
-      opacity: 0.55;
-    }
-
-    .side-left {
-      z-index: 5;
-      background: transparent;
-      clip-path: polygon(0 0, 52% 57%, 0 100%);
-      box-shadow: inset -1px 0 0 rgba(255,255,255,.46);
-    }
-
-    .side-right {
-      z-index: 5;
-      background: transparent;
-      clip-path: polygon(100% 0, 48% 57%, 100% 100%);
-      box-shadow: inset 1px 0 0 rgba(255,255,255,.46);
-    }
-
-    .bottom-flap {
-      z-index: 7;
-      background: transparent;
-      clip-path: polygon(0 100%, 50% 43%, 100% 100%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.54);
-    }
-
-    .crease {
-      z-index: 8;
-      opacity: 0;
-      background:
-        linear-gradient(27deg, transparent 49.85%, rgba(80, 72, 63, 0.18) 50%, transparent 50.15%),
-        linear-gradient(153deg, transparent 49.85%, rgba(80, 72, 63, 0.18) 50%, transparent 50.15%),
-        linear-gradient(0deg, transparent 43%, rgba(255,255,255,.34) 43.2%, transparent 43.5%);
-    }
-
-    .cover-text {
-      position: absolute;
-      z-index: 9;
-      top: 25%;
-      left: 27%;
-      right: 27%;
-      text-align: center;
-      color: rgba(69, 64, 58, 0.78);
-      transform: rotate(1.4deg);
-      transition: opacity 350ms ease;
-      display: none;
-    }
-
-    .is-open .cover-text {
-      opacity: 0;
-    }
-
-    .cover-text h1 {
-      margin: 0 0 9px;
-      font-size: clamp(30px, 4.25vw, 48px);
-      line-height: 1.12;
-      font-weight: 400;
-      white-space: nowrap;
-    }
-
-    .cover-text p {
-      margin: 0;
-      color: rgba(93, 86, 78, 0.74);
-      font-size: clamp(15px, 2vw, 22px);
-      letter-spacing: 0;
-      white-space: nowrap;
-    }
-
-    .seal-button {
-      position: absolute;
-      z-index: 10;
-      left: 50%;
-      top: 56.5%;
-      width: clamp(66px, 8.8vw, 88px);
-      height: clamp(66px, 8.8vw, 88px);
-      padding: 0;
-      border: 0;
-      border-radius: 50%;
-      background: transparent;
-      transform: translate(-50%, -50%);
-      cursor: pointer;
-      overflow: hidden;
-      box-shadow: 0 9px 13px rgba(56, 43, 35, 0.24);
-      transition: transform 240ms ease, opacity 360ms ease;
-    }
-
-    .seal-button:hover,
-    .seal-button:focus-visible {
-      transform: translate(-50%, -50%) scale(1.04);
-    }
-
-    .is-open .seal-button {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .seal-button img {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 126%;
-      height: 126%;
-      object-fit: cover;
-      display: block;
-      transform: translate(-50%, -50%);
-    }
-
-    .hint {
-      position: absolute;
-      z-index: 11;
-      left: 50%;
-      top: calc(56.5% + 58px);
-      transform: translateX(-50%);
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(247, 243, 234, 0.8);
-      color: var(--soft-ink);
-      font-size: 17px;
-      white-space: nowrap;
-      transition: opacity 350ms ease;
-    }
-
-    .is-open .hint {
-      opacity: 0;
-    }
-
-    @media (max-width: 760px) {
-      #wedding-envelope-app {
-        min-height: 100svh;
-        padding: 24px 10px 28px;
-        overflow: visible;
-      }
-
-      .scene {
-        min-height: calc(100svh - 52px);
-        place-items: center;
-      }
-
-      #wedding-envelope-app.is-open .scene {
-        min-height: 1040px;
-        place-items: start center;
-      }
-
-      .letter {
-        top: 36px;
-        left: 50%;
-        display: none;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 16px;
-        padding: 24px 18px;
-        min-height: auto;
-        transform: translate(-50%, 96px) scale(0.88);
-        width: min(430px, 94%);
-      }
-
-      .is-open .letter {
-        display: grid;
-        transform: translate(-50%, 0) scale(1);
-      }
-
-      .details,
-      .photo-panel {
-        display: contents;
-      }
-
-      .postmark {
-        order: 1;
-        grid-column: 1 / -1;
-        grid-row: 1;
-        grid-template-columns: 1fr 78px;
-        gap: 14px;
-      }
-
-      .headline {
-        font-size: clamp(58px, 18vw, 78px);
-      }
-
-      .subhead {
-        font-size: clamp(26px, 8vw, 34px);
-      }
-
-      .stamp {
-        height: 98px;
-      }
-
-      .date-line {
-        order: 4;
-        grid-column: 1 / -1;
-        grid-row: 4;
-        font-size: clamp(25px, 7.8vw, 34px);
-        line-height: 1.8;
-        margin-top: 4px;
-      }
-
-      .countdown {
-        order: 5;
-        grid-column: 1 / -1;
-        grid-row: 5;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 8px;
-        margin: 0;
-      }
-
-      .countdown span {
-        min-height: 76px;
-        font-size: 23px;
-      }
-
-      .countdown b {
-        font-size: 42px;
-      }
-
-      .poem {
-        order: 2;
-        grid-column: 1;
-        grid-row: 2;
-        min-width: 0;
-        font-size: clamp(19px, 5.8vw, 25px);
-        line-height: 1.95;
-        margin: 4px 0 0;
-        padding: 8px 0;
-        align-self: stretch;
-        display: grid;
-        align-content: center;
-      }
-
-      .main-photo {
-        order: 2;
-        grid-column: 2;
-        grid-row: 2;
-        width: 100%;
-        min-width: 0;
-        aspect-ratio: 1 / 1.12;
-        align-self: stretch;
-      }
-
-      .photo-message {
-        order: 3;
-        grid-column: 1 / -1;
-        grid-row: 3;
-        min-height: auto;
-        padding: 12px 8px;
-        font-size: clamp(23px, 6.8vw, 30px);
-        line-height: 1.9;
-      }
-
-      .event-note {
-        order: 6;
-        grid-column: 1 / -1;
-        grid-row: 6;
-        font-size: clamp(24px, 7vw, 32px);
-        line-height: 1.8;
-        text-align: right;
-      }
-
-      .row-line {
-        grid-template-columns: 1fr;
-      }
-
-      .envelope-wrap {
-        top: 50%;
-        left: 50%;
-        width: min(372px, 94%);
-        height: 238px;
-        min-height: 238px;
-        transform: translate(-50%, -50%) rotate(-1.4deg);
-      }
-
-      .envelope-image {
-        object-fit: contain;
-        transform: none;
-      }
-
-      .is-open .envelope-wrap {
-        transform: translate(-50%, 16px) rotate(-1.4deg) scale(0.9);
-      }
-
-      .cover-text {
-        left: 18%;
-        right: 18%;
-        top: 27%;
-      }
-
-      .cover-text h1 {
-        font-size: clamp(27px, 8.5vw, 36px);
-      }
-
-      .cover-text p {
-        font-size: clamp(14px, 4.4vw, 18px);
-      }
-    }
-  </style>
-
-  <div class="scene" id="scene">
-    <article class="letter" aria-label="دعوت‌نامه عروسی عاطفه و رامین">
-      <section class="photo-panel" aria-label="عکس عاطفه و رامین">
-        <div class="main-photo">
-          <img src="مفید/دوتایی خندان.png" alt="عاطفه و رامین">
-        </div>
-        <div class="photo-message">
-          از شما دعوت می کنیم تا در این شب به یادماندنی، کنار ما باشید و شادی ما را سهیم شوید.
-        </div>
-      </section>
-
-      <section class="details">
-        <div class="postmark">
-          <div>
-            <h2 class="headline">دعوت‌نامه</h2>
-            <p class="subhead">جشن پیوند عاطفه و رامین</p>
-          </div>
-          <div class="stamp">
-            <img src="مفید/postage.png" alt="تمبر دعوت‌نامه">
-          </div>
-        </div>
-
-        <div class="poem">
-          همتم بدرقه راه کن ای طایر قدس<br>
-          که دراز است ره مقصد و من نوسفرم<br>
-          ای نسیم سحری بندگیِ من برسان<br>
-          که فراموش مکن وقت دعای سحرم
-        </div>
-
-        <div class="row-line date-line">
-          <span>جمعه ۲۳ مرداد ۱۴۰۵، ساعت ۶ تا ۱۰ شب</span>
-        </div>
-
-        <div class="countdown" aria-label="شمارش معکوس تا ۲۳ مرداد">
-          <span><b id="days">۰</b>روز</span>
-          <span><b id="hours">۰</b>ساعت</span>
-          <span><b id="minutes">۰</b>دقیقه</span>
-          <span><b id="seconds">۰</b>ثانیه</span>
-        </div>
-
-        <div class="event-note">
-          نشانی: ......
-        </div>
-
-      </section>
-    </article>
-
-    <div class="envelope-wrap" aria-label="پاکت دعوت‌نامه">
-      <div class="envelope">
-        <img class="envelope-image" src="مفید/pure-envelop.webp" alt="پاکت دعوت‌نامه">
-        <div class="inner-shadow"></div>
-        <div class="flap"></div>
-        <div class="side-left"></div>
-        <div class="side-right"></div>
-        <div class="bottom-flap"></div>
-        <div class="crease"></div>
-        <div class="cover-text">
-          <h1>عاطفه و رامین</h1>
-          <p>دعوت‌نامه جشن عروسی</p>
-        </div>
-        <button class="seal-button" id="sealButton" type="button" aria-label="باز کردن پاکت">
-          <img src="مفید/وکس.png" alt="">
-        </button>
-        <div class="hint">برای باز کردن، مهر را لمس کنید</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#c9beb6" />
+    <title>دعوت‌نامه عروسی</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="scene" aria-label="دعوت‌نامه عروسی">
+      <div class="backdrop" aria-hidden="true">
+        <span class="lace lace--left"></span>
+        <span class="lace lace--right"></span>
       </div>
-    </div>
 
-    <audio id="weddingMusic" preload="auto" src="مفید/Arman Garshasbi - Omri Be Har Koye Gozar.mp3"></audio>
-  </div>
+      <div class="sparkles" id="sparkles" aria-hidden="true"></div>
 
-  <script>
-    (function () {
-      const root = document.getElementById("wedding-envelope-app");
-      const letter = root.querySelector(".letter");
-      const seal = document.getElementById("sealButton");
-      const music = document.getElementById("weddingMusic");
-      const target = new Date("2026-08-14T18:00:00+03:30").getTime();
-      const persianDigits = new Intl.NumberFormat("fa-IR", { useGrouping: false });
+      <button class="envelope-stage" id="envelope" type="button" aria-label="باز کردن دعوت‌نامه" aria-expanded="false">
+        <span class="envelope-shadow" aria-hidden="true"></span>
 
-      function setText(id, value) {
-        document.getElementById(id).textContent = persianDigits.format(Math.max(0, value));
-      }
+        <span class="envelope">
+          <span class="envelope__back"></span>
 
-      function updateCountdown() {
-        const distance = Math.max(0, target - Date.now());
-        const day = 24 * 60 * 60 * 1000;
-        const hour = 60 * 60 * 1000;
-        const minute = 60 * 1000;
-        setText("days", Math.floor(distance / day));
-        setText("hours", Math.floor((distance % day) / hour));
-        setText("minutes", Math.floor((distance % hour) / minute));
-        setText("seconds", Math.floor((distance % minute) / 1000));
-      }
+          <img
+            class="invitation"
+            src="assets/images/invitation.png"
+            alt="دعوت‌نامه عاطفه و رامین؛ جمعه ۲۳ مرداد، ساعت ۱۹ تا ۲۲، تهران، عمارت مجنون"
+          />
 
-      function playMusic() {
-        music.play().catch(function () {});
-      }
+          <span class="envelope__front envelope__front--left"></span>
+          <span class="envelope__front envelope__front--right"></span>
+          <span class="envelope__front envelope__front--bottom"></span>
+          <span class="envelope__flap"></span>
 
-      function openEnvelope() {
-        root.classList.add("is-open");
-        music.currentTime = 0;
-        playMusic();
-      }
+          <span class="seal" aria-hidden="true">
+            <img src="assets/images/seal.png" alt="" />
+          </span>
 
-      function closeEnvelope() {
-        root.classList.remove("is-open");
-        music.pause();
-        music.currentTime = 0;
-      }
+          <span class="tap-copy">روی پاکت بزنید</span>
+        </span>
+      </button>
+    </main>
 
-      seal.addEventListener("click", function (event) {
-        event.stopPropagation();
-        openEnvelope();
-      });
+    <footer class="controls">
+      <div class="controls__inner">
+        <button class="icon-button" id="musicButton" type="button" aria-label="پخش موسیقی" title="موسیقی">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l10-2v13M9 18c0 1.7-1.8 3-4 3s-4-1.3-4-3 1.8-3 4-3 4 1.3 4 3Zm10-2c0 1.7-1.8 3-4 3s-4-1.3-4-3 1.8-3 4-3 4 1.3 4 3Z" /></svg>
+        </button>
+        <button class="details-button" id="detailsButton" type="button">اطلاعات مراسم</button>
+        <button class="icon-button controls__fullscreen" id="fullscreenButton" type="button" aria-label="نمایش تمام‌صفحه" title="تمام‌صفحه">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5" /></svg>
+        </button>
+      </div>
+    </footer>
 
-      letter.addEventListener("click", function (event) {
-        event.stopPropagation();
-      });
+    <dialog class="details" id="detailsDialog">
+      <button class="details__close" id="closeDetails" type="button" aria-label="بستن">×</button>
+      <p class="details__kicker">جشن پیوند ما</p>
+      <h2>اطلاعات مراسم</h2>
+      <dl>
+        <div><dt>تاریخ</dt><dd>جمعه، ۲۳ مرداد</dd></div>
+        <div><dt>ساعت</dt><dd>۱۹:۰۰</dd></div>
+        <div><dt>نشانی</dt><dd>تهران، عمارت مجنون</dd></div>
+      </dl>
+      <a
+        class="details__map-link"
+        href="https://www.google.com/maps/dir/?api=1&amp;destination=35.6647378%2C51.2293936&amp;travelmode=driving"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="نمایش محل مراسم در گوگل مپ"
+      >
+        <svg class="details__map-logo" viewBox="0 0 32 32" aria-hidden="true">
+          <path fill="#34a853" d="M16 2a10 10 0 0 0-10 10c0 7.5 10 18 10 18s10-10.5 10-18A10 10 0 0 0 16 2Z"/>
+          <path fill="#fbbc04" d="M6 12c0 3.3 2.2 7.6 4.7 11.2L16 16l-5.8-8A9.9 9.9 0 0 0 6 12Z"/>
+          <path fill="#4285f4" d="M16 2a10 10 0 0 0-5.8 1.9L16 12l8.1-4.2A10 10 0 0 0 16 2Z"/>
+          <path fill="#ea4335" d="M24.1 7.8 16 12v4l5.3 7.2C23.8 19.6 26 15.3 26 12c0-1.5-.3-2.9-.9-4.2Z"/>
+          <circle cx="16" cy="12" r="3.5" fill="#fff"/>
+        </svg>
+        <span>مشاهده مسیر در Google Maps</span>
+      </a>
+      <p class="details__note">مشتاق دیدارتان هستیم</p>
+    </dialog>
 
-      root.addEventListener("click", function (event) {
-        if (!root.classList.contains("is-open")) {
-          return;
-        }
-        if (!event.target.closest(".letter")) {
-          closeEnvelope();
-        }
-      });
+    <audio id="music" src="assets/audio/wedding-song.mp3" loop preload="auto"></audio>
 
-      updateCountdown();
-      window.setInterval(updateCountdown, 1000);
-    }());
-  </script>
-</div>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
