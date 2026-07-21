@@ -1,94 +1,98 @@
-const envelope = document.querySelector('#envelope');
-const sparkles = document.querySelector('#sparkles');
-const detailsButton = document.querySelector('#detailsButton');
-const detailsDialog = document.querySelector('#detailsDialog');
-const closeDetails = document.querySelector('#closeDetails');
-const fullscreenButton = document.querySelector('#fullscreenButton');
-const musicButton = document.querySelector('#musicButton');
-const music = document.querySelector('#music');
+const openButton = document.getElementById("openInvitation");
+const audio = document.getElementById("weddingAudio");
+const audioToggle = document.getElementById("audioToggle");
+const inviteContent = document.getElementById("inviteContent");
+const timeline = document.querySelector(".timeline");
+const revealItems = document.querySelectorAll(".reveal-on-scroll");
+let timelineFrame = null;
 
-let opened = false;
+const digitMap = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
 
-function setMusicState(isPlaying) {
-  musicButton.classList.toggle('is-playing', isPlaying);
-  musicButton.setAttribute('aria-label', isPlaying ? 'توقف موسیقی' : 'پخش موسیقی');
+audio.load();
+
+function formatNumber(value, pad = 0) {
+  return String(value)
+    .padStart(pad, "0")
+    .replace(/\d/g, (digit) => digitMap[Number(digit)]);
 }
 
-function openInvitation() {
-  if (opened) return;
-  opened = true;
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function updateCountdown() {
+  const weddingDate = new Date("2026-08-14T17:00:00+03:30").getTime();
+  const remaining = Math.max(0, weddingDate - Date.now());
+  const totalSeconds = Math.floor(remaining / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
 
-  envelope.classList.add(reducedMotion ? 'is-open' : 'is-opening');
-  envelope.setAttribute('aria-expanded', 'true');
-  envelope.setAttribute('aria-label', 'دعوت‌نامه باز شده');
-
-  music.play()
-    .then(() => setMusicState(true))
-    .catch((error) => console.info('Music playback could not start.', error));
-
-  if (!reducedMotion) {
-    window.setTimeout(() => envelope.classList.add('is-card-visible'), 900);
-    window.setTimeout(() => {
-      envelope.classList.remove('is-card-visible');
-      envelope.classList.add('is-lifting');
-    }, 1500);
-    window.setTimeout(() => {
-      envelope.classList.remove('is-lifting');
-      envelope.classList.add('is-front');
-    }, 2900);
-    window.setTimeout(() => {
-      envelope.classList.remove('is-front');
-      envelope.classList.add('is-rotating');
-    }, 3300);
-    window.setTimeout(() => {
-      envelope.classList.remove('is-opening', 'is-card-visible', 'is-lifting', 'is-front', 'is-rotating');
-      envelope.classList.add('is-open');
-    }, 4300);
-  }
+  document.getElementById("days").textContent = formatNumber(days);
+  document.getElementById("hours").textContent = formatNumber(hours, 2);
+  document.getElementById("minutes").textContent = formatNumber(minutes, 2);
+  document.getElementById("seconds").textContent = formatNumber(seconds, 2);
 }
 
-envelope.addEventListener('click', openInvitation);
-
-// Decorative lights. Change 28 to add or remove particles.
-for (let i = 0; i < 28; i += 1) {
-  const particle = document.createElement('i');
-  particle.className = 'sparkle';
-  particle.style.left = `${Math.random() * 100}%`;
-  particle.style.top = `${Math.random() * 100}%`;
-  particle.style.setProperty('--size', `${2 + Math.random() * 5}px`);
-  particle.style.setProperty('--duration', `${2.5 + Math.random() * 4}s`);
-  particle.style.setProperty('--delay', `${Math.random() * 4}s`);
-  sparkles.appendChild(particle);
+function setAudioButton() {
+  audioToggle.textContent = audio.paused ? "\u266a" : "II";
+  audioToggle.setAttribute("aria-label", audio.paused ? "پخش موسیقی" : "توقف موسیقی");
 }
 
-detailsButton.addEventListener('click', () => detailsDialog.showModal());
-closeDetails.addEventListener('click', () => detailsDialog.close());
-detailsDialog.addEventListener('click', (event) => {
-  if (event.target === detailsDialog) detailsDialog.close();
-});
+function updateTimelineProgress() {
+  if (!timeline) return;
+  const rect = timeline.getBoundingClientRect();
+  const viewportAnchor = window.innerHeight * 0.55;
+  const progress = (viewportAnchor - rect.top) / rect.height;
+  const clamped = Math.max(0, Math.min(1, progress));
+  const lineInset = 14;
+  const y = lineInset + clamped * (rect.height - lineInset * 2);
+  timeline.style.setProperty("--progress-y", `${y}px`);
+}
 
-fullscreenButton.addEventListener('click', async () => {
-  try {
-    if (!document.fullscreenElement) {
-      await document.documentElement.requestFullscreen();
-    } else {
-      await document.exitFullscreen();
+function requestTimelineProgress() {
+  if (timelineFrame) return;
+  timelineFrame = requestAnimationFrame(() => {
+    timelineFrame = null;
+    updateTimelineProgress();
+  });
+}
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
     }
-  } catch (error) {
-    console.info('Fullscreen is unavailable in this browser.', error);
+  });
+}, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+
+revealItems.forEach((item) => revealObserver.observe(item));
+
+openButton.addEventListener("click", async () => {
+  document.body.classList.add("opened");
+  try {
+    await audio.play();
+  } catch {
+    audioToggle.textContent = "\u266a";
   }
+  setAudioButton();
+  setTimeout(() => inviteContent.scrollIntoView({ behavior: "smooth", block: "start" }), 1350);
 });
 
-musicButton.addEventListener('click', async () => {
-  if (music.paused) {
-    await music.play();
-    setMusicState(true);
+audioToggle.addEventListener("click", async () => {
+  if (audio.paused) {
+    try {
+      await audio.play();
+    } catch {
+      return;
+    }
   } else {
-    music.pause();
-    setMusicState(false);
+    audio.pause();
   }
+  setAudioButton();
 });
 
-music.addEventListener('pause', () => setMusicState(false));
-music.addEventListener('play', () => setMusicState(true));
+updateCountdown();
+updateTimelineProgress();
+setInterval(updateCountdown, 1000);
+window.addEventListener("scroll", requestTimelineProgress, { passive: true });
+window.addEventListener("resize", requestTimelineProgress);
+setAudioButton();
