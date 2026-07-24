@@ -25,6 +25,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "BMitra";
+  src: url("assets/fonts/B-Mitra.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -297,10 +305,85 @@ p { line-height: 1.45; }
   margin-top: 80px;
   color: #6f541c;
 }
+.blessing {
+  padding-bottom: 132px;
+  background:
+    linear-gradient(180deg, rgba(251, 241, 223, .28), rgba(251, 241, 223, .04) 46%, rgba(251, 241, 223, .26)),
+    url("assets/blessing-bg.png") center / cover no-repeat;
+}
+.section-frame {
+  position: absolute;
+  inset: 18px;
+  z-index: 2;
+  width: calc(100% - 36px);
+  height: calc(100% - 36px);
+  object-fit: fill;
+  opacity: .86;
+  pointer-events: none;
+}
 .blessing .script {
   color: #765a1e;
   font-size: 36px;
   text-shadow: 0 1px 0 rgba(255,255,255,.55);
+}
+.plain-persian {
+  font-family: "BMitra", Tahoma, Arial, sans-serif;
+  font-size: 32px;
+  line-height: 1.95;
+  color: #776d53;
+}
+.love-line {
+  margin: 8px auto 44px;
+}
+.invitation-copy {
+  width: min(100%, 410px);
+  margin: 34px auto 28px;
+}
+.blessing-ornament {
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+}
+.blessing-ornament-top {
+  width: min(36%, 150px);
+  margin: -10px auto 22px;
+  transform: rotate(180deg);
+}
+.blessing-ornament-line {
+  width: min(72%, 330px);
+  margin: 14px auto 8px;
+}
+.blessing-heading {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) 54px;
+  align-items: center;
+  gap: 2px;
+  margin: 0 0 16px;
+}
+.blessing-heading span {
+  display: block;
+}
+.heading-ornament {
+  width: 72px;
+  max-width: 22vw;
+  opacity: .84;
+  pointer-events: none;
+}
+.heading-ornament-right,
+.heading-ornament-left {
+  transform: rotate(90deg);
+}
+.heading-ornament-right {
+  justify-self: start;
+}
+.heading-ornament-left {
+  justify-self: end;
+}
+.blessing-divider {
+  width: min(84%, 390px);
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, rgba(136, 94, 34, .62) 18%, rgba(136, 94, 34, .8), rgba(136, 94, 34, .62) 82%, transparent);
 }
 
 .swans-section {
@@ -354,7 +437,21 @@ p { line-height: 1.45; }
 }
 
 .schedule {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 136px;
   box-shadow: none;
+}
+.schedule-ornament-top {
+  width: min(34%, 148px);
+  margin: -14px auto 18px;
+}
+.schedule-heading {
+  margin-bottom: 12px;
+}
+.schedule-ornament-line {
+  width: min(76%, 340px);
+  margin: 0 auto 42px;
 }
 
 .torn-paper::before,
@@ -375,6 +472,10 @@ p { line-height: 1.45; }
 .torn-paper > * {
   position: relative;
   z-index: 3;
+}
+.torn-paper > .section-frame {
+  position: absolute;
+  z-index: 2;
 }
 
 .countdown-section {
@@ -416,7 +517,7 @@ p { line-height: 1.45; }
 
 .timeline {
   position: relative;
-  min-height: 386px;
+  min-height: 430px;
   margin-top: 60px;
   isolation: isolate;
   transform: translateZ(0);
@@ -474,7 +575,7 @@ p { line-height: 1.45; }
 .event:nth-of-type(1) { top: 0; }
 .event:nth-of-type(2) { top: 110px; }
 .event:nth-of-type(3) { top: 220px; }
-.event:nth-of-type(4) { top: 330px; }
+.event:nth-of-type(4) { top: 306px; }
 .schedule.is-visible .event {
   opacity: 1;
   transform: translateY(0);
@@ -617,7 +718,28 @@ footer {
   h2 { font-size: 50px; line-height: 1.2; }
   p { line-height: 1.6; }
   .arabic { margin-top: 48px; font-size: 34px; }
-  .blessing .script { font-size: 44px; line-height: 1.65; }
+  .blessing { padding-bottom: 104px; }
+  .schedule { padding-bottom: 112px; }
+  .section-frame {
+    inset: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+  }
+  .blessing .script { font-size: 38px; line-height: 1.65; }
+  .plain-persian { font-size: 28px; line-height: 1.75; }
+  .love-line { margin-bottom: 34px; }
+  .invitation-copy { width: min(100%, 360px); margin-bottom: 22px; }
+  .blessing-ornament-top { width: min(42%, 136px); margin-bottom: 18px; }
+  .blessing-ornament-line { width: min(82%, 300px); }
+  .schedule-ornament-top { width: min(42%, 136px); margin-bottom: 16px; }
+  .schedule-ornament-line { width: min(82%, 300px); margin-bottom: 34px; }
+  .blessing-heading {
+    grid-template-columns: 38px minmax(0, 1fr) 38px;
+    margin-bottom: 14px;
+  }
+  .heading-ornament { width: 56px; }
+  .schedule-heading { margin-bottom: 12px; }
+  .blessing-divider { width: min(86%, 340px); }
   .countdown-section { padding-inline: 14px; }
   .countdown {
     grid-template-columns: repeat(7, max-content);
@@ -628,7 +750,7 @@ footer {
   .countdown span { font-size: 22px; }
   .countdown b { font-size: 38px; }
   .timeline {
-    min-height: 350px;
+    min-height: 386px;
     margin-top: 44px;
   }
   .event {
@@ -638,7 +760,7 @@ footer {
   .event time, .event b { font-size: 29px; }
   .event:nth-of-type(2) { top: 96px; }
   .event:nth-of-type(3) { top: 192px; }
-  .event:nth-of-type(4) { top: 288px; }
+  .event:nth-of-type(4) { top: 270px; }
   .timeline-progress {
     width: 40px;
     height: 40px;
@@ -660,8 +782,17 @@ footer {
   body { font-size: 25px; }
   h2 { font-size: 44px; }
   .panel { padding-inline: 18px; }
-  .blessing .script { font-size: 38px; }
+  .blessing { padding-bottom: 96px; }
+  .schedule { padding-bottom: 104px; }
+  .blessing .script { font-size: 34px; }
+  .plain-persian { font-size: 25px; }
+  .blessing-heading {
+    grid-template-columns: 30px minmax(0, 1fr) 30px;
+  }
+  .heading-ornament { width: 48px; }
+  .schedule-ornament-line { margin-bottom: 28px; }
   .event time, .event b { font-size: 25px; }
+  .event:nth-of-type(4) { top: 260px; }
   .countdown strong { font-size: 36px; }
   .countdown span { font-size: 19px; }
 }
