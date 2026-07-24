@@ -346,7 +346,7 @@ p { line-height: 1.45; }
 }
 .blessing-ornament-top {
   width: min(36%, 150px);
-  margin: -10px auto 22px;
+  margin: -10px auto 8px;
   transform: rotate(180deg);
 }
 .blessing-ornament-line {
@@ -733,7 +733,7 @@ footer {
     width: min(74%, 320px);
   }
   .invitation-copy { margin-bottom: 22px; }
-  .blessing-ornament-top { width: min(42%, 136px); margin-bottom: 18px; }
+  .blessing-ornament-top { width: min(42%, 136px); margin-bottom: 6px; }
   .blessing-ornament-line { width: min(82%, 300px); }
   .schedule-ornament-top { width: min(42%, 136px); margin-bottom: 16px; }
   .schedule-ornament-line { width: min(82%, 300px); margin-bottom: 34px; }
