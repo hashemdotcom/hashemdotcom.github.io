@@ -328,7 +328,7 @@ p { line-height: 1.45; }
 }
 .plain-persian {
   font-family: "BMitra", Tahoma, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 26px;
   line-height: 1.95;
   color: #776d53;
 }
@@ -726,9 +726,13 @@ footer {
     height: calc(100% - 20px);
   }
   .blessing .script { font-size: 38px; line-height: 1.65; }
-  .plain-persian { font-size: 28px; line-height: 1.75; }
+  .plain-persian { font-size: 23px; line-height: 1.8; }
   .love-line { margin-bottom: 34px; }
-  .invitation-copy { width: min(100%, 360px); margin-bottom: 22px; }
+  .love-line,
+  .invitation-copy {
+    width: min(74%, 320px);
+  }
+  .invitation-copy { margin-bottom: 22px; }
   .blessing-ornament-top { width: min(42%, 136px); margin-bottom: 18px; }
   .blessing-ornament-line { width: min(82%, 300px); }
   .schedule-ornament-top { width: min(42%, 136px); margin-bottom: 16px; }
@@ -785,7 +789,11 @@ footer {
   .blessing { padding-bottom: 96px; }
   .schedule { padding-bottom: 104px; }
   .blessing .script { font-size: 34px; }
-  .plain-persian { font-size: 25px; }
+  .plain-persian { font-size: 21px; }
+  .love-line,
+  .invitation-copy {
+    width: min(72%, 270px);
+  }
   .blessing-heading {
     grid-template-columns: 30px minmax(0, 1fr) 30px;
   }
