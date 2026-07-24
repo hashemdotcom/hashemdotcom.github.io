@@ -17,7 +17,7 @@ function formatNumber(value, pad = 0) {
 }
 
 function updateCountdown() {
-  const weddingDate = new Date("2026-08-14T17:00:00+03:30").getTime();
+  const weddingDate = new Date("2026-08-14T19:00:00+03:30").getTime();
   const remaining = Math.max(0, weddingDate - Date.now());
   const totalSeconds = Math.floor(remaining / 1000);
   const days = Math.floor(totalSeconds / 86400);

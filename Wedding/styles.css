@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: "IranNastaliq";
-  src: url("assets/fonts/font_6.ttf") format("truetype");
+  src: url("assets/fonts/IranNastaliq.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -278,7 +278,7 @@ h2 { font-size: 66px; margin: 0 0 38px; }
 h3 { font-size: 44px; margin: 24px 0 12px; font-weight: 400; }
 p { line-height: 1.45; }
 .small, .date { margin: 14px 0 0; font-size: 28px; }
-.date { font-family: "IRANSansDN", Tahoma, Arial, sans-serif; }
+.date { font-family: "IranNastaliq", "IRANSansDN", serif; }
 .scroll-link {
   position: absolute;
   left: 50%;
@@ -293,13 +293,13 @@ p { line-height: 1.45; }
 
 .arabic {
   font-family: "IranNastaliq", "IRANSansDN", serif;
-  font-size: 40px;
+  font-size: 50px;
   margin-top: 80px;
   color: #6f541c;
 }
 .blessing .script {
   color: #765a1e;
-  font-size: 58px;
+  font-size: 36px;
   text-shadow: 0 1px 0 rgba(255,255,255,.55);
 }
 
@@ -378,10 +378,17 @@ p { line-height: 1.45; }
 }
 
 .countdown-section {
+  position: relative;
   padding: 84px 20px 92px;
   text-align: center;
   background:
-    linear-gradient(180deg, rgba(248, 239, 223, .96), rgba(251, 241, 223, 1) 22%, rgba(251, 241, 223, 1) 78%, rgba(248, 239, 223, .96));
+    linear-gradient(180deg, rgba(251, 241, 223, .34), rgba(251, 241, 223, .1) 46%, rgba(251, 241, 223, .42)),
+    url("assets/countdown-bg.png") center / cover no-repeat;
+  overflow: hidden;
+}
+.countdown-section > * {
+  position: relative;
+  z-index: 1;
 }
 .persian-date {
   margin: -18px 0 28px;
@@ -552,7 +559,7 @@ footer {
   border-radius: 50%;
   background: var(--burgundy);
   color: #fff8ec;
-  font: 700 26px "IRANSansDN", Tahoma, Arial, sans-serif;
+  font: 400 26px "IranNastaliq", "IRANSansDN", serif;
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(94, 17, 31, .25);
 }
