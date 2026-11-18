@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VR Material Perception Research | Melika Hashemi</title>
+    <meta
+      name="description"
+      content="An MSc research project on visual, auditory, and tactile cues for material recognition in virtual reality."
+    />
+    <link rel="icon" type="image/jpeg" href="images/Profesional.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;650;800&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="research.css" />
+    <link rel="stylesheet" href="pixel-theme.css" />
+  </head>
+  <body class="research-page">
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="Back to portfolio">← Back to portfolio</a>
+      <nav aria-label="Primary navigation">
+        <a href="index.html#story">Story</a>
+        <a href="research.html" aria-current="page">Research</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#resume">Resume</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="research-main">
+      <section class="research-hero">
+        <div class="research-hero-copy">
+          <p class="eyebrow">MSc dissertation / University of Birmingham</p>
+          <h1>Enhancing surface material recognition in virtual reality</h1>
+          <p class="research-lede">
+            How do visual, auditory, and tactile cues work together when people identify
+            materials in VR? I built a controlled multisensory experiment and compared
+            recognition accuracy, confidence, and patterns of error across seven cue
+            combinations.
+          </p>
+          <div class="research-tags" aria-label="Project topics and tools">
+            <span>Virtual reality</span>
+            <span>Material perception</span>
+            <span>Multisensory integration</span>
+            <span>Unity</span>
+            <span>Haptics</span>
+            <span>Python</span>
+          </div>
+          <div class="research-actions">
+            <a class="button primary" href="index.html#contact">Contact me</a>
+            <a class="button ghost" href="Resume.pdf" target="_blank" rel="noreferrer">Download CV</a>
+          </div>
+        </div>
+        <aside class="research-fact" aria-label="Study overview">
+          <span class="research-fact-label">The experiment</span>
+          <strong>4</strong><span>surface materials</span>
+          <strong>7</strong><span>sensory cue conditions</span>
+          <strong>20</strong><span>adult participants</span>
+          <p>Guided surface sweeps, material choices, confidence ratings, and fingertip movement.</p>
+        </aside>
+      </section>
+
+      <section class="research-section research-overview" aria-labelledby="question-title">
+        <div class="research-section-heading">
+          <p class="eyebrow">The question</p>
+          <h2 id="question-title">Does adding more senses always improve recognition?</h2>
+        </div>
+        <div class="research-overview-copy">
+          <p>
+            Participants identified wood, sandpaper, metal, or fabric after a guided
+            finger sweep in VR. The experiment tested vision, audio, and vibrotactile
+            feedback alone and in combination, then compared accuracy, confidence,
+            confusion patterns, and movement.
+          </p>
+          <p>
+            The study was designed to test whether richer combinations consistently
+            helped, or whether cue quality and alignment mattered more than the number
+            of channels.
+          </p>
+        </div>
+      </section>
+
+      <section class="research-section findings-section" aria-labelledby="findings-title">
+        <div class="research-section-heading">
+          <p class="eyebrow">What I found</p>
+          <h2 id="findings-title">Vision dominated this task</h2>
+          <p>
+            Accuracy stayed near ceiling when vision was present. Non-visual conditions
+            were weaker, and combining cues did not automatically improve performance.
+          </p>
+        </div>
+        <figure class="accuracy-figure">
+          <figcaption>Material identification accuracy by cue condition</figcaption>
+          <ul class="accuracy-chart">
+            <li><span>Vision</span><span class="accuracy-track" aria-hidden="true"><span style="width: 97.9%"></span></span><strong>97.9%</strong></li>
+            <li><span>Vision + audio</span><span class="accuracy-track" aria-hidden="true"><span style="width: 95.1%"></span></span><strong>95.1%</strong></li>
+            <li><span>Vision + tactile</span><span class="accuracy-track" aria-hidden="true"><span style="width: 94.9%"></span></span><strong>94.9%</strong></li>
+            <li><span>Vision + audio + tactile</span><span class="accuracy-track" aria-hidden="true"><span style="width: 95.4%"></span></span><strong>95.4%</strong></li>
+            <li><span>Audio</span><span class="accuracy-track" aria-hidden="true"><span style="width: 75%"></span></span><strong>75.0%</strong></li>
+            <li><span>Tactile</span><span class="accuracy-track" aria-hidden="true"><span style="width: 72.7%"></span></span><strong>72.7%</strong></li>
+            <li><span>Audio + tactile</span><span class="accuracy-track" aria-hidden="true"><span style="width: 68.9%"></span></span><strong>68.9%</strong></li>
+          </ul>
+          <p class="figure-note">
+            Condition means reported in the dissertation. Twenty adults participated;
+            the condition-level Friedman analysis reports N = 19. Bars are descriptive
+            means; no uncertainty intervals are shown here.
+          </p>
+        </figure>
+        <div class="finding-notes">
+          <article>
+            <h3>More cues were not always better</h3>
+            <p>Adding audio or tactile feedback to vision offered little additional benefit in this experiment.</p>
+          </article>
+          <article>
+            <h3>Confidence usually tracked accuracy</h3>
+            <p>Participants tended to be more confident when correct, though high-confidence errors appeared under cue conflict.</p>
+          </article>
+          <article>
+            <h3>Some materials were harder to tell apart</h3>
+            <p>Metal was identified most accurately; errors were more common among wood, fabric, and sandpaper.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="research-section methods-section" aria-labelledby="methods-title">
+        <div class="research-section-heading">
+          <p class="eyebrow">How I built it</p>
+          <h2 id="methods-title">A connected VR and haptics pipeline</h2>
+        </div>
+        <ol class="research-pipeline" aria-label="Research experiment pipeline">
+          <li>
+            <span>01</span>
+            <strong>Prepare cues</strong>
+            <small>Unity scenes; Python and Syntacts audio-derived vibration</small>
+          </li>
+          <li>
+            <span>02</span>
+            <strong>Run the VR task</strong>
+            <small>Guided material sweeps in Meta Quest 2</small>
+          </li>
+          <li>
+            <span>03</span>
+            <strong>Capture responses</strong>
+            <small>Sensel Morph movement, choices, and confidence</small>
+          </li>
+          <li>
+            <span>04</span>
+            <strong>Analyse behaviour</strong>
+            <small>Accuracy, confusions, confidence, and movement</small>
+          </li>
+        </ol>
+        <div class="methods-grid">
+          <article>
+            <span class="method-number">01</span>
+            <h3>VR task</h3>
+            <p>Built the virtual environment and task in Unity for Meta Quest 2.</p>
+          </article>
+          <article>
+            <span class="method-number">02</span>
+            <h3>Touch and movement</h3>
+            <p>Used a Sensel Morph pad to capture fingertip movement during guided surface sweeps.</p>
+          </article>
+          <article>
+            <span class="method-number">03</span>
+            <h3>Audio and haptics</h3>
+            <p>Prepared audio-derived vibrotactile signals with Python and rendered tactile feedback with Syntacts.</p>
+          </article>
+          <article>
+            <span class="method-number">04</span>
+            <h3>Behavioral analysis</h3>
+            <p>Compared accuracy, confidence, material confusions, and fingertip movement across conditions using Python.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="research-section contribution-section" aria-labelledby="contribution-title">
+        <div>
+          <p class="eyebrow">Contribution and next steps</p>
+          <h2 id="contribution-title">Design for cue quality and alignment</h2>
+        </div>
+        <div>
+          <p>
+            The project brings seven visual, auditory, and tactile configurations into
+            one VR protocol and combines recognition accuracy with confidence, error
+            structure, and movement measures. The results suggest that XR feedback
+            should be selected and aligned for its diagnostic value, rather than added
+            simply to increase the number of sensations.
+          </p>
+          <p>
+            The controlled renderings and guided sweep may not capture natural surface
+            exploration. Future work could tune cross-modal timing and intensity, test
+            other cue mappings, and use more naturalistic interactions.
+          </p>
+        </div>
+      </section>
+
+      <footer class="research-footer">
+        <a href="index.html">Back to portfolio</a>
+        <a href="Resume.pdf" target="_blank" rel="noreferrer">Download CV</a>
+        <a href="mailto:smlika.hashemi@gmail.com">Get in touch</a>
+      </footer>
+    </main>
+  </body>
+</html>

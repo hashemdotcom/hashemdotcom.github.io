@@ -6,26 +6,25 @@
     <title>Melika Hashemi | Portfolio</title>
     <meta
       name="description"
-      content="Personal portfolio for Melika Hashemi, a full-stack developer working across React, Django, data visualization, VR, and cognitive neuroimaging."
+      content="Melika Hashemi's portfolio in VR perception research, cognitive neuroimaging, data science, and full-stack development."
     />
     <link rel="icon" type="image/jpeg" href="images/Profesional.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;650;800&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="pixel-theme.css" />
   </head>
   <body>
-    <div class="scroll-meter" aria-hidden="true"><span></span></div>
-    <div class="cursor-glow" aria-hidden="true"></div>
-
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Melika Hashemi home">MH</a>
-      <div class="brand-bubble" aria-hidden="true">Building interfaces with feeling.</div>
       <nav aria-label="Primary navigation">
         <a href="#story">Story</a>
+        <a href="research.html">Research</a>
         <a href="#work">Work</a>
         <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
@@ -33,11 +32,9 @@
     </header>
 
     <main id="top">
-      <img class="scroll-computer" src="images/cartoon-old-computer-png.webp" alt="" aria-hidden="true" />
-      <img class="scroll-computer scroll-computer-alt" src="images/OIP.png" alt="" aria-hidden="true" />
       <section class="hero panel">
         <div class="hero-copy">
-          <p class="eyebrow">Full-stack developer / data visual thinker</p>
+          <p class="eyebrow">Cognitive Neuroimaging &amp; Data Science MSc / VR &amp; perception</p>
           <h1>
             <span>Melika</span>
             <span>Hashemi</span>
@@ -47,31 +44,34 @@
             experiments where code, perception, and human-centered design meet.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#work">Explore work</a>
+            <a class="button primary" href="research.html">View thesis research</a>
+            <a class="button ghost" href="#work">Selected experience</a>
           </div>
           <div class="hero-icon-links" aria-label="Quick links">
             <a href="mailto:smlika.hashemi@gmail.com" aria-label="Email"> @ </a>
             <a href="https://www.linkedin.com/in/melika-hashemi-525626200/" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
-            <a href="Resume.pdf" target="_blank" rel="noreferrer" aria-label="Resume PDF">CV</a>
-            <a href="#resume" aria-label="Resume details">#</a>
+            <a href="Resume.pdf" target="_blank" rel="noreferrer" aria-label="Download CV">CV</a>
           </div>
         </div>
 
         <div class="hero-stage" aria-hidden="true">
-          <img class="portrait" src="images/Sunglasses.jpg" alt="" />
-          <img class="computer hero-computer" src="images/cartoon-old-computer-png.webp" alt="" />
+          <img class="portrait" src="images/pixel-night-desk.png" alt="" />
+          <span class="pixel-motif pixel-star star-one"></span>
+          <span class="pixel-motif pixel-star star-two"></span>
+          <span class="pixel-motif pixel-heart"></span>
           <span class="code-chip chip-one">React.js</span>
           <span class="code-chip chip-two">Django</span>
           <span class="code-chip chip-three">VR Lab</span>
         </div>
       </section>
 
-      <section class="sky-scroll-section" aria-label="VR perception research statement">
+      <section id="research" class="sky-scroll-section" aria-label="VR perception research statement">
         <div class="sky-word">PERCEPTION</div>
         <div class="sky-copy">
           <p class="eyebrow">Perception research</p>
-          <h2>VR, softness, and human perception</h2>
-          <p>My Birmingham thesis explores how people perceive material softness in virtual reality, using Unity, haptic feedback, visual cues, and behavioral data analysis.</p>
+          <h2>How do senses shape material recognition in VR?</h2>
+          <p>My MSc dissertation compared visual, auditory, and tactile cues in a controlled VR task, measuring recognition accuracy, confidence, and error patterns.</p>
+          <a class="research-link" href="research.html">Read the thesis case study <span aria-hidden="true">→</span></a>
         </div>
         <div class="sky-facts" aria-label="Research highlights">
           <span>Unity environments</span>
@@ -81,114 +81,59 @@
         </div>
       </section>
 
-      <section id="story" class="story-rail" aria-label="Portfolio story">
-        <div class="story-sticky">
-          <div class="chapter-count">
-            <span class="current">01</span>
-            <span>/</span>
-            <span>04</span>
-          </div>
-          <div class="scene">
-            <div class="scene-card scene-img active" aria-hidden="true">
-              <div class="circuit-board">
-                <span></span><span></span><span></span><span></span><span></span>
-              </div>
-              <div class="booking-flow">Electronics to full-stack systems</div>
-            </div>
-            <div class="scene-card scene-img" aria-hidden="true">
-              <div class="browser-bar"><span></span><span></span><span></span></div>
-              <div class="chart-lines">
-                <i style="--h: 42%"></i>
-                <i style="--h: 68%"></i>
-                <i style="--h: 35%"></i>
-                <i style="--h: 82%"></i>
-                <i style="--h: 58%"></i>
-              </div>
-              <div class="tooltip-card">JSON insight mapped</div>
-            </div>
-            <div class="scene-card scene-img" aria-hidden="true">
-              <div class="vr-world">
-                <span class="vr-headset"></span>
-                <span class="vr-grid"></span>
-              </div>
-              <div class="tooltip-card">Unity + haptics experiment</div>
-            </div>
-            <div class="scene-card scene-img" aria-hidden="true">
-              <div class="calendar-grid">
-                <span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span>
-              </div>
-              <div class="booking-flow">Django REST booking flow</div>
-            </div>
-          </div>
-          <article class="chapter active">
-            <p class="eyebrow">Chapter one</p>
-            <h2>Engineering foundations</h2>
-            <p>
-              My path began in Electrical Engineering at K.N. Toosi University of
-              Technology, where I learned to think in systems, signals, and
-              precision. That foundation still shapes how I approach software:
-              carefully, structurally, and with curiosity about how each part
-              affects the whole.
-            </p>
-          </article>
-          <article class="chapter">
-            <p class="eyebrow">Chapter two</p>
-            <h2>The teaching chapter</h2>
-            <p>
-              Teaching in school strengthened the human side of my technical work.
-              It trained me to explain complex ideas clearly, notice where people
-              get stuck, and turn knowledge into something approachable. That
-              experience now helps me design interfaces that feel understandable,
-              not just functional.
-            </p>
-          </article>
-          <article class="chapter">
-            <p class="eyebrow">Chapter three</p>
-            <h2>Master's in perception</h2>
-            <p>
-              During my MSc in Cognitive Neuroimaging and Data Science at the
-              University of Birmingham, I moved deeper into computational
-              neuroscience, VR, haptics, and material perception. My research gave
-              me a richer view of how people sense, interpret, and respond to
-              digital environments.
-            </p>
-          </article>
-          <article class="chapter">
-            <p class="eyebrow">Chapter four</p>
-            <h2>Growing as a developer</h2>
-            <p>
-              Along the way, web development became the place where all of those
-              threads came together. From Django booking systems to React data
-              visualizations and real-time analytical interfaces, I have grown into
-              a full-stack developer who builds with both technical depth and
-              human context.
-            </p>
-          </article>
+      <section id="story" class="story-section" aria-labelledby="story-title">
+        <div class="section-intro">
+          <p class="eyebrow">Research-led practice</p>
+          <h2 id="story-title">From engineering to human-centred technology</h2>
+          <p>
+            My background brings together electrical engineering, cognitive
+            neuroimaging, and software development. I use that mix to study how
+            people perceive interactive systems and to build tools grounded in
+            evidence.
+          </p>
         </div>
-        <div class="chapter-triggers" aria-hidden="true">
-          <span data-step="0"></span>
-          <span data-step="1"></span>
-          <span data-step="2"></span>
-          <span data-step="3"></span>
+        <div class="story-grid">
+          <article class="story-card">
+            <span class="story-card-label">01 / Foundation</span>
+            <h3>Electrical engineering</h3>
+            <p>Systems thinking and signal foundations from K. N. Toosi University of Technology.</p>
+          </article>
+          <article class="story-card">
+            <span class="story-card-label">02 / Research</span>
+            <h3>Perception in VR</h3>
+            <p>MSc research at the University of Birmingham on multisensory material recognition.</p>
+          </article>
+          <article class="story-card">
+            <span class="story-card-label">03 / Practice</span>
+            <h3>Software and teaching</h3>
+            <p>Full-stack product work and Python teaching, with a focus on clear, usable experiences.</p>
+          </article>
         </div>
       </section>
 
       <section id="work" class="work-section">
         <div class="section-intro">
           <p class="eyebrow">Selected experience</p>
-          <h2>Work With Motion</h2>
+          <h2>Selected Work &amp; Experience</h2>
         </div>
         <div class="work-grid">
           <article class="work-card" data-reveal>
+            <span class="year">October 2026</span>
+            <h3>ASO-Pet</h3>
+            <p>Full-stack developer building a pet-focused web experience.</p>
+            <ul>
+              <li>Developed front-end and back-end functionality for the platform.</li>
+              <li>Built and launched the <a href="https://aso-pet.hashemdotcom.space/" target="_blank" rel="noreferrer">live project</a>.</li>
+            </ul>
+          </article>
+          <article class="work-card" data-reveal>
             <span class="year">2025 - Present</span>
             <h3>Motion Dynamics</h3>
-            <p>Full-stack developer building data-rich React applications in Birmingham.</p>
+            <p>Full-stack developer building squash analytics products and the public product website in Birmingham.</p>
             <ul>
-              <li>Dynamic charts and tooltip-led analytical views.</li>
-              <li>3D human body model synchronized with chart state.</li>
-              <li>Responsive modular UI connected to backend API data.</li>
+              <li>React analytics interfaces with dynamic charts, tooltips, and API-driven insights.</li>
+              <li>3D human body model synchronized with chart data to visualize physical states.</li>
+              <li>Built the <a href="https://motiondynamics.ai/" target="_blank" rel="noreferrer">Motion Dynamics product website</a>.</li>
             </ul>
           </article>
           <article class="work-card" data-reveal>
@@ -209,6 +154,14 @@
               <li>Frontend and backend feature implementation.</li>
               <li>Process-focused automation work.</li>
               <li>Collaboration across technical and product needs.</li>
+            </ul>
+          </article>
+          <article class="work-card" data-reveal>
+            <span class="year">2023 - 2024</span>
+            <h3>Manzoume Kherad Institute</h3>
+            <p>Programming teacher in Tehran, Iran.</p>
+            <ul>
+              <li>Taught Python and WordPress to secondary and high-school students.</li>
             </ul>
           </article>
         </div>
@@ -255,52 +208,34 @@
                 <span>AI Integration</span>
               </div>
             </article>
-            <div class="ghost-lab stack-spirit" aria-label="Interactive playful coding spirit">
-              <div id="speedcapture">
-                <div class="ghost face">
-                  <div class="arms">
-                    <div class="arm"></div>
-                    <div class="arm"></div>
-                  </div>
-                  <div class="inner"><div class="mouth"></div></div>
-                </div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
-                <div class="ghost"></div>
+            <div class="ghost-lab stack-spirit pixel-console" aria-label="Pixel-themed coding terminal">
+              <div class="console-bar">
+                <span class="console-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span>melika@nightdesk: ~</span>
               </div>
+              <pre><span class="console-prompt">$</span> whoami
+Melika Hashemi
+
+<span class="console-prompt">$</span> focus
+Research <span class="console-divider">/</span> Code <span class="console-divider">/</span> Design<span class="console-cursor" aria-hidden="true">_</span></pre>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="contact-section panel">
+      <section id="contact" class="contact-section panel" aria-labelledby="contact-title">
         <div>
           <p class="eyebrow">Birmingham, United Kingdom</p>
-          <h2>Let's build something with a little gravity.</h2>
+          <h2 id="contact-title">Let’s build something meaningful.</h2>
         </div>
         <div class="contact-links">
-          <a href="mailto:smlika.hashemi@gmail.com">smlika.hashemi@gmail.com</a>
-          <a href="https://www.linkedin.com/in/melika-hashemi-525626200/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="Resume.pdf" target="_blank" rel="noreferrer">Resume PDF</a>
-          <a href="#top">Back to top</a>
+          <a href="mailto:smlika.hashemi@gmail.com">Email me <span aria-hidden="true">↗</span></a>
+          <a href="https://www.linkedin.com/in/melika-hashemi-525626200/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="Resume.pdf" target="_blank" rel="noreferrer">Resume PDF <span aria-hidden="true">↗</span></a>
+          <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
         </div>
       </section>
+
     </main>
 
     <script src="script.js"></script>
