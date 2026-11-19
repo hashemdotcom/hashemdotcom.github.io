@@ -398,21 +398,28 @@
 
 @media (max-width: 620px) {
   .research-page .site-header {
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+    padding: 0.7rem 0.75rem;
   }
 
   .research-page .site-header .brand {
-    min-height: 2.7rem;
-    padding: 0 0.7rem;
-    font-size: 0.72rem;
+    align-self: flex-start;
+    min-height: 2.5rem;
+    padding: 0 0.85rem;
+    font-size: 0.8rem;
   }
 
   .research-page .site-header nav {
-    max-width: calc(100vw - 12rem);
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    justify-content: space-between;
   }
 
   .research-main {
-    padding-top: 5.5rem;
+    padding-top: 8.5rem;
   }
 
   .research-hero {
